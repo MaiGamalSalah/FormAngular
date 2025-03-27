@@ -36,8 +36,11 @@ export class CreateNotesComponent {
       //console.log(this.profileData.value);
       this.noteservice.ctreateNotes(this.noteForm.value).subscribe((res)=>{
         console.log('Response',res);
+        //navigate to notes page
       },(err)=>{
-        console.log('Error',err);
+        //errors from backend handling on status code 401,403
+        console.log('Error',err.error.errors);//error from backend 
+        //navigate to login page and remove token from local storage
       }
 
     );
